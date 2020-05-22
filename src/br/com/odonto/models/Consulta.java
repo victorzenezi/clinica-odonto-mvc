@@ -6,12 +6,14 @@ import java.util.Date;
 public class Consulta {
 
 	private int Id;
-	private Date DataConsulta;
-	private Time HoraConsulta;
+	private String DataConsulta;
+	private String HoraConsulta;
 	private Double Valor;
 	private String Observacao;
 	private int PacienteId;
 	private int DentistaId;
+	
+	private String Paciente;
 	
 	public int getId() {
 		return Id;
@@ -19,16 +21,16 @@ public class Consulta {
 	public void setId(int id) {
 		Id = id;
 	}
-	public Date getDataConsulta() {
+	public String getDataConsulta() {
 		return DataConsulta;
 	}
-	public void setDataConsulta(Date dataConsulta) {
+	public void setDataConsulta(String dataConsulta) {
 		DataConsulta = dataConsulta;
 	}
-	public Time getHoraConsulta() {
+	public String getHoraConsulta() {
 		return HoraConsulta;
 	}
-	public void setHoraConsulta(Time horaConsulta) {
+	public void setHoraConsulta(String horaConsulta) {
 		HoraConsulta = horaConsulta;
 	}
 	public Double getValor() {
@@ -55,6 +57,11 @@ public class Consulta {
 	public void setDentistaId(int dentistaId) {
 		DentistaId = dentistaId;
 	}
+	public String getPaciente() {
+		return Paciente;
+	}
+	public void setPaciente(String paciente) {
+		Paciente = paciente;
+	}
 
-	
 }
