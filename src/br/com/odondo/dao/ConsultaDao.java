@@ -68,6 +68,86 @@ public class ConsultaDao {
 		}
 	}
 	
+	public ArrayList<Consulta> Listar() throws Exception {
+		try 
+		{
+			preparedStatement = con.prepareStatement(Query.GetAll);
+			result = preparedStatement.executeQuery();
+			
+			var consultas = new ArrayList<Consulta>();
+			
+			while(result.next())
+			{
+				var id = result.getInt("ID");
+				var data = result.getString("DATA_CONSULTA");
+				var hora = result.getString("HORA_CONSULTA");
+				var valor = result.getDouble("VALOR_CONSULTA");
+				var obs = result.getString("OBS");
+				var did = result.getInt("ID_DENTISTA");
+				var pid = result.getInt("ID_PACIENTE");
+				
+				var consulta = new Consulta();
+				
+				consulta.setId(id);
+				consulta.setDataConsulta(data);
+				consulta.setHoraConsulta(hora);
+				consulta.setValor(valor);
+				consulta.setObservacao(obs);
+				consulta.setDentistaId(did);
+				consulta.setPacienteId(pid);
+				
+				consultas.add(consulta);
+			}
+			
+			return consultas;
+						
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("Erro: " + ex.getMessage());		
+		}
+	}
+	
+	public ArrayList<Consulta> ListarAtivos() throws Exception {
+		try 
+		{
+			preparedStatement = con.prepareStatement(Query.GetAllAtivos);
+			result = preparedStatement.executeQuery();
+			
+			var consultas = new ArrayList<Consulta>();
+			
+			while(result.next())
+			{
+				var id = result.getInt("ID");
+				var data = result.getString("DATA_CONSULTA");
+				var hora = result.getString("HORA_CONSULTA");
+				var valor = result.getDouble("VALOR_CONSULTA");
+				var obs = result.getString("OBS");
+				var did = result.getInt("ID_DENTISTA");
+				var pid = result.getInt("ID_PACIENTE");
+				
+				var consulta = new Consulta();
+				
+				consulta.setId(id);
+				consulta.setDataConsulta(data);
+				consulta.setHoraConsulta(hora);
+				consulta.setValor(valor);
+				consulta.setObservacao(obs);
+				consulta.setDentistaId(did);
+				consulta.setPacienteId(pid);
+				
+				consultas.add(consulta);
+			}
+			
+			return consultas;
+						
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("Erro: " + ex.getMessage());		
+		}
+	}
+	
 	public Consulta GetbyId(int id) throws Exception {
 		try 
 		{
@@ -79,10 +159,20 @@ public class ConsultaDao {
 			
 			if(result.next())
 			{
+				var data = result.getString("DATA_CONSULTA");
+				var hora = result.getString("HORA_CONSULTA");
+				var valor = result.getDouble("VALOR_CONSULTA");
 				var obs = result.getString("OBS");
+				var did = result.getInt("ID_DENTISTA");
+				var pid = result.getInt("ID_PACIENTE");
 
 				consulta.setId(id);
+				consulta.setDataConsulta(data);
+				consulta.setHoraConsulta(hora);
+				consulta.setValor(valor);
 				consulta.setObservacao(obs);
+				consulta.setDentistaId(did);
+				consulta.setPacienteId(pid);
 			}
 			
 			return consulta;
@@ -219,6 +309,20 @@ public class ConsultaDao {
 		{
 			throw new Exception("Erro: " + ex.getMessage());		
 		}
+	}
+	
+	public void Remover(int id) throws Exception {
+		try 
+		{
+			preparedStatement = con.prepareStatement(Query.Delete);
+			preparedStatement.setInt(1, id);
+			preparedStatement.execute();
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("Erro: " + ex.getMessage());		
+		}
+		
 	}
 	
 	

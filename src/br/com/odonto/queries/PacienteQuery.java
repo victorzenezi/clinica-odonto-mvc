@@ -10,6 +10,8 @@ public class PacienteQuery {
 	
 	public final String GetporNome = "SELECT ID, NOME, DATA_NASCIMENTO as DATANASCIMENTO, EMAIL, ENDERECO, CELULAR, SEXO FROM dbOdonto.PACIENTE WHERE NOME = ?";
 	
+	public final String GetById = "SELECT ID, NOME, DATA_NASCIMENTO as DATANASCIMENTO, EMAIL, ENDERECO, CELULAR, SEXO FROM dbOdonto.PACIENTE WHERE ID = ?";
+	
 	public final String Delete = "DELETE FROM PACIENTE WHERE NOME = ?";
 	
 	public final String Update = "UPDATE dbOdonto.PACIENTE\r\n" + 

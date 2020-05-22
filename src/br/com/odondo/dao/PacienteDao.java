@@ -113,6 +113,42 @@ public class PacienteDao {
 		}
 	}
 	
+	public Paciente GetById(int id) throws Exception {
+		try 
+		{
+			preparedStatement = con.prepareStatement(Query.GetById);
+			preparedStatement.setInt(1, id);
+			result = preparedStatement.executeQuery();
+			
+			var paciente = new Paciente();
+			
+			if(result.next())
+			{
+				var nome = result.getString("NOME");
+				var data = result.getString("DATANASCIMENTO");
+				var email = result.getString("EMAIL");
+				var endereco = result.getString("ENDERECO");
+				var cel = result.getString("CELULAR");
+				var sexo = result.getString("SEXO");
+				
+				paciente.setNome(nome);
+				paciente.setDataNascimento(data);
+				paciente.setEmail(email);
+				paciente.setEndereco(endereco);
+				paciente.setCelular(cel);
+				paciente.setSexo(sexo);
+				paciente.setId(id);
+			}
+			
+			return paciente;
+						
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("Erro: " + ex.getMessage());		
+		}
+	}
+	
 	public void Remover(String nome) throws Exception {
 		try 
 		{

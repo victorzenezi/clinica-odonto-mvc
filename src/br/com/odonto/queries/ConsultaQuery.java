@@ -35,5 +35,11 @@ public class ConsultaQuery {
 			"(ID_CONSULTA, ID_PROCEDIMENTO)\r\n" + 
 			"VALUES(?, ?);";
 	
+	public final String GetAll = "SELECT * FROM CONSULTA";
+	
+	public final String GetAllAtivos = "SELECT * FROM CONSULTA WHERE ATIVO = 1";
+	
+	public final String Delete = "DELETE FROM CONSULTA WHERE ID = ?";
+	
 	public final String GetLastId = "SELECT LAST_INSERT_ID() as ID";
 }

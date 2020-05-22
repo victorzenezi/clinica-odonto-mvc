@@ -172,7 +172,7 @@ public class home {
 		lblNewLabel_3_1_1_1.setBounds(335, 236, 137, 35);
 		tela_dentistas.add(lblNewLabel_3_1_1_1);
 		
-		JButton btnattconsulta = new JButton("Atualziar Consulta");
+		JButton btnattconsulta = new JButton(" Atualizar Consulta");
 		btnattconsulta.setIcon(new ImageIcon(home.class.getResource("/images/check-2.png")));
 		btnattconsulta.setForeground(new Color(42, 157, 143));
 		btnattconsulta.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -337,6 +337,12 @@ public class home {
 		tela_consultas.add(btnMarcarConsulta);
 		
 		JButton btnDesmarcarConsulta = new JButton(" Desmarcar Consulta");
+		btnDesmarcarConsulta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				var removerConsulta = new removerConsulta();
+				removerConsulta.setVisible(true);
+			}
+		});
 		btnDesmarcarConsulta.setIcon(new ImageIcon(home.class.getResource("/images/del.png")));
 		btnDesmarcarConsulta.setForeground(new Color(42, 157, 143));
 		btnDesmarcarConsulta.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -347,6 +353,12 @@ public class home {
 		tela_consultas.add(btnDesmarcarConsulta);
 		
 		JButton btnProcedimento = new JButton("Novo Procedimento");
+		btnProcedimento.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				var proc = new novoProcedimento();
+				proc.setVisible(true);
+			}
+		});
 		btnProcedimento.setIcon(new ImageIcon(home.class.getResource("/images/dente.png")));
 		btnProcedimento.setForeground(new Color(42, 157, 143));
 		btnProcedimento.setFont(new Font("Arial", Font.PLAIN, 20));

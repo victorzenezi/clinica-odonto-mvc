@@ -169,7 +169,7 @@ public class novaConsulta extends JFrame {
 		JLabel lblProc = new JLabel("Procedimento");
 		lblProc.setForeground(new Color(42, 157, 143));
 		lblProc.setFont(new Font("Arial", Font.PLAIN, 17));
-		lblProc.setBounds(345, 158, 82, 35);
+		lblProc.setBounds(345, 158, 141, 35);
 		contentPane.add(lblProc);
 		
 		JComboBox<String> cbproc = new JComboBox<String>();

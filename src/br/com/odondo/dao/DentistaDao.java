@@ -84,4 +84,32 @@ public class DentistaDao {
 			throw new Exception("Erro: " + ex.getMessage());		
 		}
 	}
+	
+	public Dentista GetById(int id) throws Exception {
+		try 
+		{
+			preparedStatement = con.prepareStatement(Query.GetById);
+			preparedStatement.setInt(1, id);
+			result = preparedStatement.executeQuery();
+			
+			var dentista = new Dentista();
+			
+			if(result.next())
+			{
+				var nome = result.getString("NOME");
+				var especialidade = result.getString("ESPECIALIDADE");
+
+				dentista.setNome(nome);
+				dentista.setId(id);
+				dentista.setEspecialidade(especialidade);
+			}
+			
+			return dentista;
+						
+		}
+		catch(Exception ex)
+		{
+			throw new Exception("Erro: " + ex.getMessage());		
+		}
+	}
 }

@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import br.com.odonto.models.Dentista;
+import br.com.odonto.models.Paciente;
 import br.com.odonto.models.Procedimento;
 import br.com.odonto.queries.ProcedimentoQuery;
 import br.com.odonto.util.ConnectionFactory;
@@ -23,6 +24,22 @@ public class ProcedimentoDao {
 			con = cn.getConnection();
 		}
 		catch (Exception ex){
+			throw new Exception("Erro: " + ex.getMessage());		
+		}
+	}
+	
+	public void Cadastrar(Procedimento proc) throws Exception {
+		try 
+		{
+			preparedStatement = con.prepareStatement(Query.Post);
+			preparedStatement.setString(1, proc.getDescricao());
+			preparedStatement.setDouble(2, proc.getValor());
+			
+			preparedStatement.execute();
+						
+		}
+		catch(Exception ex)
+		{
 			throw new Exception("Erro: " + ex.getMessage());		
 		}
 	}
